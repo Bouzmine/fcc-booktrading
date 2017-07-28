@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <h2>All books</h2>
+    
+    {{#each books}}
+        <div class="row text-center">
+            <div class="col-md-6 first">
+                {{ name }}
+            </div>
+            <div class="col-md-6">
+                <a href="/api/ask/{{ _id }}">
+                    {{#if disabled}}
+                        <button class="btn btn-primary" disabled>
+                            Ask for a trade
+                        </button>
+                    {{else}}
+                        <button class="btn btn-primary">
+                            Ask for a trade
+                        </button>
+                    {{/if}}
+                </a>
+            </div>
+        </div>
+        <hr></hr>
+    {{/each}}
+</div>
+
+<style>
+    .first.col-md-6 {
+        padding-top: 10px;
+        height: 24px;
+    }
+</style>

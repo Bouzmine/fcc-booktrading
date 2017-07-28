@@ -5,6 +5,8 @@ var routes = require('./app/routes/index.js');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
+var expressHbs = require("express-handlebars");
+var bodyParser = require("body-parser");
 
 var app = express();
 require('dotenv').load();
@@ -25,6 +27,23 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.engine('hbs', expressHbs.create({
+	extname:'hbs',
+	defaultLayout:'main.hbs',
+	helpers: {
+	    toJSON : function(object) {
+	      return JSON.stringify(object);
+	    }
+	}
+}).engine);
+app.set('view engine', 'hbs');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
 
 routes(app, passport);
 

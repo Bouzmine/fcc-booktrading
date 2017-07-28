@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <h2>Trade requests from other users</h2>
+    
+    {{#each pendingTrades}}
+        <div class="row text-center">
+            <div class="col-md-4 first">
+                {{ name }}
+            </div>
+            <div class="col-md-4">
+                <a href="/api/accept/{{ _id }}">
+                    <button class="btn btn-success">Accept</button>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="/api/deny/{{ _id }}">
+                    <button class="btn btn-default">Deny</button>
+                </a>
+            </div>
+        </div>
+        <hr></hr>
+    {{/each}}
+    
+    <h3>Accepted trade requests</h3>
+    {{#each acceptedTrades}}
+        <div class="row text-center">
+            <div class="col-md-12">
+                {{ name }}
+            </div>
+        </div>
+        <hr></hr>
+    {{/each}}
+    
+    <h3>Denied trade requests</h3>
+    {{#each deniedTrades}}
+        <div class="row text-center">
+            <div class="col-md-12">
+                {{ name }}
+            </div>
+        </div>
+        <hr></hr>
+    {{/each}}
+</div>
+
+<style>
+    .first.col-md-4 {
+        padding-top: 10px;
+        height: 24px;
+    }
+</style>

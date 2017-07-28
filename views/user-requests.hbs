@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <h2>Your trade requests</h2>
+    
+    {{#each trades}}
+        <div class="row text-center">
+            <div class="col-md-4 first">
+                {{ name }}
+            </div>
+            <div class="col-md-4 first">
+                {{ statusText }}
+            </div>
+            <div class="col-md-4">
+                <a href="/api/delete-trade/{{ _id }}">
+                    <button class="btn btn-danger">Delete trade</button>
+                </a>
+            </div>
+        </div>
+        <hr></hr>
+    {{/each}}
+</div>
+
+<style>
+    .first.col-md-4 {
+        padding-top: 10px;
+        height: 24px;
+    }
+</style>

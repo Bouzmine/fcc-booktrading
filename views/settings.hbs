@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <h2>Your settings</h2>
+    
+    <form action="/api/settings" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="John Doe" value="{{{ name }}}">
+        </div>
+        <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" class="form-control" name="city" id="city" placeholder="San Francisco" value="{{{ city }}}">
+        </div>
+        <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" class="form-control" name="state" id="state" placeholder="California" value="{{{ state }}}">
+        </div>
+        
+        <button class="btn btn-default">Submit</button>
+    </form>
+</div>
