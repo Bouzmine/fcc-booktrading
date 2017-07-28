@@ -1,44 +1,57 @@
 <div class="container-fluid">
     <h2>Trade requests from other users</h2>
     
-    {{#each pendingTrades}}
-        <div class="row text-center">
-            <div class="col-md-4 first">
-                {{ name }}
+    {{#if pendingTrades.length}}
+        {{#each pendingTrades}}
+            <div class="row text-center">
+                <div class="col-md-4 first">
+                    {{ name }}
+                </div>
+                <div class="col-md-4">
+                    <a href="/api/accept/{{ _id }}">
+                        <button class="btn btn-success">Accept</button>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="/api/deny/{{ _id }}">
+                        <button class="btn btn-default">Deny</button>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <a href="/api/accept/{{ _id }}">
-                    <button class="btn btn-success">Accept</button>
-                </a>
-            </div>
-            <div class="col-md-4">
-                <a href="/api/deny/{{ _id }}">
-                    <button class="btn btn-default">Deny</button>
-                </a>
-            </div>
-        </div>
-        <hr></hr>
-    {{/each}}
+            <hr></hr>
+        {{/each}}
+    {{else}}
+        <h3>Nothing to show here, nobody asked to trade with you.</h3>
+    {{/if}}
     
     <h3>Accepted trade requests</h3>
-    {{#each acceptedTrades}}
-        <div class="row text-center">
-            <div class="col-md-12">
-                {{ name }}
+    {{#if acceptedTrades.length}}
+        {{#each acceptedTrades}}
+            <div class="row text-center">
+                <div class="col-md-12">
+                    {{ name }}
+                </div>
             </div>
-        </div>
-        <hr></hr>
-    {{/each}}
+            <hr></hr>
+        {{/each}}
+    {{else}}
+        <h3>Nothing to show here, there are no accepted trades.</h3>
+    {{/if}}
+    
     
     <h3>Denied trade requests</h3>
-    {{#each deniedTrades}}
-        <div class="row text-center">
-            <div class="col-md-12">
-                {{ name }}
+    {{#if acceptedTrades.length}}
+        {{#each deniedTrades}}
+            <div class="row text-center">
+                <div class="col-md-12">
+                    {{ name }}
+                </div>
             </div>
-        </div>
-        <hr></hr>
-    {{/each}}
+            <hr></hr>
+        {{/each}}
+    {{else}}
+        <h3>Nothing to show here, there are no denied trades.</h3>
+    {{/if}}
 </div>
 
 <style>

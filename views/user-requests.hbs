@@ -1,22 +1,26 @@
 <div class="container-fluid">
     <h2>Your trade requests</h2>
     
-    {{#each trades}}
-        <div class="row text-center">
-            <div class="col-md-4 first">
-                {{ name }}
+    {{#if trades.length}}
+        {{#each trades}}
+            <div class="row text-center">
+                <div class="col-md-4 first">
+                    {{ name }}
+                </div>
+                <div class="col-md-4 first">
+                    {{ statusText }}
+                </div>
+                <div class="col-md-4">
+                    <a href="/api/delete-trade/{{ _id }}">
+                        <button class="btn btn-danger">Delete trade</button>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-4 first">
-                {{ statusText }}
-            </div>
-            <div class="col-md-4">
-                <a href="/api/delete-trade/{{ _id }}">
-                    <button class="btn btn-danger">Delete trade</button>
-                </a>
-            </div>
-        </div>
-        <hr></hr>
-    {{/each}}
+            <hr></hr>
+        {{/each}}
+    {{else}}
+        <h3>Nothing to show here, ask for a trade.</h3>
+    {{/if}}
 </div>
 
 <style>

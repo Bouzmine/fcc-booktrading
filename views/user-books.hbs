@@ -1,21 +1,25 @@
 <div class="container-fluid">
     <h2>Your books</h2>
     
-    {{#each books}}
-        <div class="row text-center">
-            <div class="col-md-6 first">
-                {{ name }}
+    {{#if books.length}}
+        {{#each books}}
+            <div class="row text-center">
+                <div class="col-md-6 first">
+                    {{ name }}
+                </div>
+                <div class="col-md-6">
+                    <a href="/api/delete-book/{{ _id }}">
+                        <button class="btn btn-danger">
+                            Delete this book
+                        </button>
+                    </a>
+                </div>
             </div>
-            <div class="col-md-6">
-                <a href="/api/delete-book/{{ _id }}">
-                    <button class="btn btn-danger">
-                        Delete this book
-                    </button>
-                </a>
-            </div>
-        </div>
-        <hr></hr>
-    {{/each}}
+            <hr></hr>
+        {{/each}}
+    {{else}}
+        <h3>Nothing to show here, add a book to change that fact.</h3>
+    {{/if}}
     
     <form action="/api/add-book" method="post">
         <div class="row">
